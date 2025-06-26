@@ -10,14 +10,14 @@ import Skill from '@/screens/skills';
 
 function App() {
   // Main App
-  const [selectedPage, setSelectedPage] = useState("About")
+  const [selectedPage, setSelectedPage] = useState("about")
   const [isTopPage, setIsTopPage] = useState<boolean>(true)
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
         setIsTopPage(true);
-        setSelectedPage("About")
+        setSelectedPage("about")
       }
       
       if (window.scrollY !== 0) {
@@ -31,7 +31,7 @@ function App() {
   const comp =  useRef(null)
 
   useLayoutEffect(() => {
-    let context = gsap.context(() => {
+    const context = gsap.context(() => {
       const t1 = gsap.timeline()
       t1.from("#intro-slider", {
         xPercent: "-100",

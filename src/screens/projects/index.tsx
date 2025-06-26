@@ -6,7 +6,7 @@ import Projects from './Projects';
 const projectTimeline: Array<ProjectType> = [
   {
     id: 1,
-    date_role: "Present - 2024",
+    date_role: "2022 - 2025",
     description: "Assisting with the Teaching of Undergraduate Computer Science courses at Ashesi University",
     role: "Teaching Assistant",
 
@@ -28,7 +28,7 @@ const projectTimeline: Array<ProjectType> = [
   {
     id: 4,
     date_role: "February 2023",
-    description: "Worked on the integration of LLMS technologies to enhance legal research at Diligence AI",
+    description: "Worked on the integration of LLMs to enhance legal research at Diligence AI",
     role: "Freelance",
 
   },

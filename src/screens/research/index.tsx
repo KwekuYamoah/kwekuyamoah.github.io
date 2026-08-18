@@ -11,21 +11,30 @@ import useMediaQuery from '@/hooks/useMediaQuery';
 const researchDetails: Array<ResearchType> = [
     {
         resId: 1,
-        resTitle: "Africa Deep Fake Speech & ASV Systems",
-        resDescription: "Evaluating Deepfake Speech and ASV Systems on African Accents: ASV systems authenticate users via their speech, while DNN-based voice...",
-        resDate: "Dec 08",
-        resYear: "2023",
-        resLocation: "Accra, Ghana",
-        resLink: "https://openreview.net/forum?id=j26ZkJ7w64"
+        resTitle: "Elicitation-Matrix Twi Translation",
+        resDescription: "An Elicitation-Matrix Approach to Pragmatic Context Modeling in Low-Resource Machine Translation: The Case of Akuapem Twi. We introduce an elicitation-matrix method for capturing pragmatic context in low-resource MT...",
+        resDate: "May",
+        resYear: "2026",
+        resLocation: "Marco Island, FL",
+        resLink: "https://journals.flvc.org/FLAIRS/article/view/141846/147007"
     },
     {
         resId: 2,
-        resTitle: "Effort to Apply NLP in Africa",
-        resDescription: "This paper investigates advancements in ASR, NLP, and TTS technologies for African languages, addressing the continent's implementation...",
-        resDate: "May 15",
-        resYear: "2023",
-        resLocation: "Accra, Ghana",
-        resLink: "https://journal.ashesi.edu.gh/index.php/seed/article/view/63/39"
+        resTitle: "Speech Prosody for Robot Instructions",
+        resDescription: "Enhancing Speech Instruction Understanding and Disambiguation in Robotics via Speech Prosody: we show that prosodic cues improve a robot's ability to disambiguate spoken instructions...",
+        resDate: "Aug",
+        resYear: "2025",
+        resLocation: "Rotterdam, Netherlands",
+        resLink: "https://www.isca-archive.org/interspeech_2025/sasu25b_interspeech.pdf"
+    },
+    {
+        resId: 3,
+        resTitle: "Machine Translation Corpus for Kpelle",
+        resDescription: "Building a Functional Machine Translation Corpus for Kpelle: we present the first functional MT corpus for Kpelle, a low-resource Mande language spoken in Liberia and Guinea...",
+        resDate: "July",
+        resYear: "2025",
+        resLocation: "Vienna, Austria",
+        resLink: "https://aclanthology.org/2025.africanlp-1.8/"
     },
 ];
 
@@ -35,6 +44,7 @@ type Props = {
 
 const Research = ({setSelectedPage}: Props) => {
       const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+      const cvUrl = `${import.meta.env.BASE_URL}Kweku_Yamoah_CV.pdf`;
   return (
     <section id='research' className='bg-secondary-500 mx-auto'>
         <motion.div 
@@ -104,6 +114,27 @@ const Research = ({setSelectedPage}: Props) => {
                         </motion.div>
                     </div>
                 ))}
+
+                <motion.div
+                className='flex justify-center px-24 md:px-40'
+                initial="hidden"
+                whileInView="visible"
+                viewport={{once: true, amount: 0.5}}
+                transition={{duration: 0.5}}
+                variants={{
+                    hidden: {opacity: 0, y: 20},
+                    visible: {opacity: 1, y: 0}
+                }}
+                >
+                    <a
+                        href={cvUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-7 py-4 border rounded-full text-white text-xs font-bold tracking-wide hover:cursor-pointer hover:bg-white hover:text-black transition-colors duration-300"
+                    >
+                        See more in my CV →
+                    </a>
+                </motion.div>
             </div>
 
         </motion.div>

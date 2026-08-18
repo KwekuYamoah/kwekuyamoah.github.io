@@ -3,12 +3,13 @@ type Props = {
 }
 
 const RHeadText = ({title}: Props) => {
-  const parts = title.split(/(NLP|Deep Fake Speech|ASV Systems)/);
+  const highlightWords = ["NLP", "Deep Fake Speech", "ASV Systems", "Twi", "Speech Prosody", "Kpelle"];
+  const parts = title.split(new RegExp(`(${highlightWords.join("|")})`));
   return (
     <>
       <h1 className={`font-satoshi text-4xl leading-snug text-white font-black md:text-7xl md:w-[408px] md:leading-snug`}>
         {parts.map((part, index) =>
-          part === "NLP" || part ==="Deep Fake Speech" || part ==="ASV Systems" ? (
+          highlightWords.includes(part) ? (
             <span key={index} className="text-primary-500">
               {part}
             </span>

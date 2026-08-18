@@ -23,6 +23,8 @@ export default {
         "ink-muted": "rgb(var(--color-ink-muted) / <alpha-value>)",
         hairline: "rgb(var(--color-hairline) / <alpha-value>)",
         hero: "rgb(var(--color-hero) / <alpha-value>)",
+        accent: "rgb(var(--color-accent) / <alpha-value>)",
+        "on-accent": "rgb(var(--color-on-accent) / <alpha-value>)",
       },
       letterSpacing: {
         'extra-wide': '0.3em', 

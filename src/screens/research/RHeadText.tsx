@@ -10,7 +10,7 @@ const RHeadText = ({title}: Props) => {
       <h1 className={`font-satoshi text-3xl leading-snug text-ink font-black md:text-6xl md:w-[408px] md:leading-snug`}>
         {parts.map((part, index) =>
           highlightWords.includes(part) ? (
-            <span key={index} className="text-primary-500">
+            <span key={index} className="text-accent">
               {part}
             </span>
           ) : (

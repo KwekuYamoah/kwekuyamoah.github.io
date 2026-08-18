@@ -8,35 +8,41 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Dark (default). `chrome` sits *deeper* than `canvas` — the header strips
-   read as wells cut into the page. The light palette below mirrors that
-   relationship rather than inverting it, so the design language survives
-   the theme switch. */
+/* The whole palette is anchored to `--color-hero`, which is sampled straight
+   out of the portrait illustration's flat backdrop. `chrome` (the header
+   strips) is held within a hair of it, so the strip directly beneath the hero
+   continues the hero's surface instead of cutting against it; `canvas` (the
+   page body) then sits a step deeper. Header strips read as lit shelves and
+   the body recedes behind them — the same relationship in both themes.
+
+   Every ink value clears WCAG AA (>=4.5:1) against hero, chrome and canvas
+   alike; `accent` clears AA-large (>=3:1) on all three. */
 :root {
-  --color-canvas: 29 29 29;      /* secondary-500 #1D1D1D */
-  --color-chrome: 0 0 0;         /* black */
+  --color-hero: 59 57 64;        /* #3B3940 — hero-dark.jpg's backdrop */
+  --color-chrome: 51 50 58;      /* #33323A */
+  --color-canvas: 33 32 38;      /* #212026 */
   --color-ink: 255 255 255;      /* white */
   --color-ink-soft: 232 232 232; /* gray-20 #E8E8E8 */
-  --color-ink-muted: 130 130 130;/* gray-50 #828282 */
-  --color-hairline: 79 79 79;    /* gray-500 #4F4F4F */
-  /* Sampled straight out of hero-dark.jpg's flat backdrop. The portrait is
-     letterboxed rather than cropped, and this makes the letterboxing
-     invisible — the illustration reads as if it were painted on the page. */
-  --color-hero: 59 57 64;        /* #3B3940 */
+  --color-ink-muted: 166 166 174;/* #A6A6AE */
+  --color-hairline: 74 73 82;    /* #4A4952 */
+  /* The brand red lightens in dark mode — #DC2626 on these surfaces sits at
+     2.4:1, too dim to carry the name initials. */
+  --color-accent: 239 68 68;     /* #EF4444 */
+  --color-on-accent: 33 32 38;   /* #212026 — reads on the lighter red */
 }
 
-/* Warm paper rather than pure white: #FFF under a full-page layout is
-   glaring next to the always-dark hero, and the warm base keeps the
-   #DC2626 accent from going acidic. Every ink value clears AA (>=4.5:1)
-   against both canvas and chrome. */
+/* Warm paper rather than pure white: #FFF is glaring at full-page scale, and
+   the warm base keeps the red accent from going acidic. */
 html.light {
-  --color-canvas: 244 242 238;   /* #F4F2EE paper */
-  --color-chrome: 231 227 220;   /* #E7E3DC recessed band */
+  --color-hero: 246 245 241;     /* #F6F5F1 — hero-light.jpg's backdrop */
+  --color-chrome: 246 245 241;   /* #F6F5F1 */
+  --color-canvas: 234 230 222;   /* #EAE6DE */
   --color-ink: 22 19 15;         /* #16130F */
   --color-ink-soft: 58 52 45;    /* #3A342D */
-  --color-ink-muted: 103 94 84;  /* #675E54 */
-  --color-hairline: 214 208 199; /* #D6D0C7 */
-  --color-hero: 246 245 241;     /* #F6F5F1 — hero-light.jpg's backdrop */
+  --color-ink-muted: 107 98 87;  /* #6B6257 */
+  --color-hairline: 220 214 204; /* #DCD6CC */
+  --color-accent: 200 30 30;     /* #C81E1E — deepened for AA on paper */
+  --color-on-accent: 255 255 255;
 }
 
 /* The navbar logo is a flat white/transparent mark with no light-mode

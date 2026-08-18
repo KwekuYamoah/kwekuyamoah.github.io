@@ -50,7 +50,7 @@ const growLine = {
 };
 
 const linkClass =
-    "text-primary-500 underline underline-offset-4 decoration-primary-500/60 hover:text-ink-soft transition-colors duration-300";
+    "text-accent underline underline-offset-4 decoration-accent/60 hover:text-ink-soft transition-colors duration-300";
 
 const About = ({ setSelectedPage }: Props) => {
 
@@ -81,9 +81,9 @@ const About = ({ setSelectedPage }: Props) => {
                     >
                         <div className="relative text-2xl md:text-4xl font-semibold">
                             <FloatingParticles />
-                            <p className="tracking-super-wide text-ink"><span className="text-primary-500">K</span>WEKU</p>
-                            <p className="pl-5 py-3 tracking-super-wide text-ink"><span className="text-primary-500">A</span>NDOH</p>
-                            <p className="pl-10 tracking-super-wide text-ink"><span className="text-primary-500">Y</span>AMOAH</p>
+                            <p className="tracking-super-wide text-ink"><span className="text-accent">K</span>WEKU</p>
+                            <p className="pl-5 py-3 tracking-super-wide text-ink"><span className="text-accent">A</span>NDOH</p>
+                            <p className="pl-10 tracking-super-wide text-ink"><span className="text-accent">Y</span>AMOAH</p>
                         </div>
                     </motion.div>
                     <motion.div
@@ -157,7 +157,7 @@ const About = ({ setSelectedPage }: Props) => {
                         <motion.span variants={fadeInUp}> program, working under Professor </motion.span>
                         <motion.a variants={fadeInUp} href="https://www.emmanueldorley.com" target="_blank" rel="noopener noreferrer" className={linkClass}>Emmanuel Dorley</motion.a>
                         <motion.span variants={fadeInUp}> in the Intelligent Agents Research Group. I investigate neuro-symbolic and multi-agent approaches to </motion.span>
-                        <motion.span variants={fadeInUp} className="text-primary-500">NLP</motion.span>
+                        <motion.span variants={fadeInUp} className="text-accent">NLP</motion.span>
                         <motion.span variants={fadeInUp}> in low-resource contexts, building systems that use structured linguistic knowledge for efficient, reliable, and controllable language understanding and generation, with a focus on African languages.</motion.span>
                     </p>
                 </motion.div>
@@ -172,8 +172,8 @@ const About = ({ setSelectedPage }: Props) => {
                     {educationHistory.map((edu, idx) => (
                         <motion.div key={edu.id} variants={fadeInUp} className="flex gap-6 md:gap-10">
                             <div className="flex flex-col items-center">
-                                <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary-500/10 border border-primary-500 flex items-center justify-center">
-                                    <edu.icon className="w-6 h-6 md:w-7 md:h-7 text-primary-500" />
+                                <div className="shrink-0 w-12 h-12 md:w-14 md:h-14 rounded-full bg-accent/10 border border-accent flex items-center justify-center">
+                                    <edu.icon className="w-6 h-6 md:w-7 md:h-7 text-accent" />
                                 </div>
                                 {idx !== educationHistory.length - 1 && (
                                     <motion.div
@@ -188,7 +188,7 @@ const About = ({ setSelectedPage }: Props) => {
                                     href={edu.institutionLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block mt-1 text-ink-soft font-montserrat text-sm md:text-base underline underline-offset-4 hover:text-primary-500 transition-colors duration-300"
+                                    className="inline-block mt-1 text-ink-soft font-montserrat text-sm md:text-base underline underline-offset-4 hover:text-accent transition-colors duration-300"
                                 >
                                     {edu.institution}
                                 </a>

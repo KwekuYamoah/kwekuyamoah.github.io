@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# LaTeX build artifacts (main.tex is the CV source; public/Kweku_Yamoah_CV.pdf
+# is the compiled copy served on the site)
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+main.pdf

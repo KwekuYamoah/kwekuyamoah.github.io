@@ -33,28 +33,21 @@ const RotatingPhrases = () => {
   return (
     <div className="flex flex-col items-start">
       <AnimatePresence mode="wait">
-        <motion.span
-          key={current.original}
+        <motion.div
+          key={current.lang}
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.5 }}
-          className="text-right text-xl md:text-2xl font-accent text-gray-20 tracking-wide"
+          className="flex flex-col items-start"
         >
-          {current.original}
-        </motion.span>
-      </AnimatePresence>
-      <AnimatePresence mode="wait">
-        <motion.span
-          key={current.transliteration}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-sm text-gray-200 italic"
-        >
-          {current.transliteration} – {current.lang}
-        </motion.span>
+          <span className="text-right text-xl md:text-2xl font-accent text-gray-20 tracking-wide">
+            {current.original}
+          </span>
+          <span className="text-sm text-gray-200 italic">
+            {current.transliteration} – {current.lang}
+          </span>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

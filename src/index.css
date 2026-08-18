@@ -19,6 +19,10 @@
   --color-ink-soft: 232 232 232; /* gray-20 #E8E8E8 */
   --color-ink-muted: 130 130 130;/* gray-50 #828282 */
   --color-hairline: 79 79 79;    /* gray-500 #4F4F4F */
+  /* Sampled straight out of hero-dark.jpg's flat backdrop. The portrait is
+     letterboxed rather than cropped, and this makes the letterboxing
+     invisible — the illustration reads as if it were painted on the page. */
+  --color-hero: 59 57 64;        /* #3B3940 */
 }
 
 /* Warm paper rather than pure white: #FFF under a full-page layout is
@@ -32,13 +36,47 @@ html.light {
   --color-ink-soft: 58 52 45;    /* #3A342D */
   --color-ink-muted: 103 94 84;  /* #675E54 */
   --color-hairline: 214 208 199; /* #D6D0C7 */
+  --color-hero: 246 245 241;     /* #F6F5F1 — hero-light.jpg's backdrop */
 }
 
 /* The navbar logo is a flat white/transparent mark with no light-mode
-   variant asset, so it's inverted to read on a light chrome background.
-   Only applied once the nav has left the (always-dark) hero. */
+   variant asset, so it's inverted to read on light surfaces. */
 html.light .nav-logo {
   filter: invert(1);
+}
+
+/* Both portraits are rendered so the browser has them decoded before a
+   toggle happens — swapping `src` instead would blank the hero on the
+   first switch. Only the one matching the theme is displayed. */
+.hero-portrait-light {
+  display: none;
+}
+
+html.light .hero-portrait-dark {
+  display: none;
+}
+
+html.light .hero-portrait-light {
+  display: block;
+}
+
+/* Sits *above* the portrait and the hero surface alike, so it shades both
+   by the same amount and never reveals where the image ends. This is what
+   gives the flat illustration depth and keeps the name legible. */
+.hero-vignette {
+  background: radial-gradient(
+    115% 90% at 62% 38%,
+    transparent 38%,
+    rgb(0 0 0 / 0.55) 100%
+  );
+}
+
+html.light .hero-vignette {
+  background: radial-gradient(
+    115% 90% at 62% 38%,
+    transparent 44%,
+    rgb(120 108 92 / 0.2) 100%
+  );
 }
 
 /* Theme swaps animate; scroll-driven color changes on fixed chrome do not

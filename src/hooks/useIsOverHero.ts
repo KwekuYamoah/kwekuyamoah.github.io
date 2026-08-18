@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 
 /**
- * Whether the always-dark hero is still behind a given point of the viewport.
+ * Whether the hero is still behind a given point of the viewport.
  *
  * The navbar and footer are fixed, so they float over the hero for its full
- * height and then over ordinary (theme-aware) sections after it. They can't
- * simply follow the active theme: in light mode that would put dark text on
- * the dark hero photo. This reports which of the two they're currently over,
- * so they can pin themselves to light-on-dark while the hero is behind them.
+ * height and then over ordinary sections after it. Chrome that would obscure
+ * the portrait — the mobile nav's backdrop band — uses this to hold off until
+ * the hero has scrolled past.
  *
  * `scrollY === 0` is not a usable substitute — the hero is a full viewport
  * tall, so it stays behind the navbar for ~100vh of scrolling.

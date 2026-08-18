@@ -1,4 +1,4 @@
-import { useState, CSSProperties } from 'react'
+import { useState } from 'react'
 import Logo from "@/assets/Logo.png";
 import { Bars3Icon, XMarkIcon, SunIcon, MoonIcon } from "@heroicons/react/24/solid";
 import Link from './Link';
@@ -23,19 +23,10 @@ const Navbar = ({selectedPage, setSelectedPage}: Props) => {
 
     // Desktop nav never takes a background — it floats over the page, which
     // is the whole look. Only the mobile row (short, and crossing content at
-    // full width) gets a backdrop, and only once it has left the hero.
+    // full width) gets a backdrop, and only once it has left the hero, so it
+    // never lays a slab across the portrait.
     const navbarBackground =
         !isAboveMediumScreens && !isOverHero ? "bg-chrome/95 backdrop-blur-sm drop-shadow" : "";
-
-    // Over the hero the nav is on an always-dark surface regardless of theme,
-    // so pin its inks to the dark values instead of following the theme.
-    const heroPinnedStyle = isOverHero
-        ? ({
-              "--color-ink": "255 255 255",
-              "--color-ink-soft": "232 232 232",
-              "--color-ink-muted": "130 130 130",
-          } as CSSProperties)
-        : undefined;
 
 
     const handleMenuToggle = () => {
@@ -47,11 +38,11 @@ const Navbar = ({selectedPage, setSelectedPage}: Props) => {
     return (
         <nav>
             {/* Desktop View */}
-            <div style={heroPinnedStyle} className={`${flexBetween} ${navbarBackground} fixed top-0 z-40 w-full py-6`}>
+            <div className={`${flexBetween} ${navbarBackground} fixed top-0 z-40 w-full py-6`}>
                 <div className={ `mx-auto w-full px-12 ${isAboveMediumScreens ? flexStartBetween : flexBetween}`}>
                     {/* Left Side */}
                     <div className='w-24'>
-                        <img alt="logo" src={Logo}  className={`${isOverHero ? '' : 'nav-logo'} w-full h-full transition-[filter] duration-300`}/>
+                        <img alt="logo" src={Logo} className="nav-logo w-full h-full transition-[filter] duration-300"/>
                     </div>
 
                     {/* Right Side */}

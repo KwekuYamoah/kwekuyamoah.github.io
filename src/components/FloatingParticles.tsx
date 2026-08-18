@@ -28,7 +28,7 @@ const FloatingParticles = () => {
           animate={{ opacity: [0, 0.8, 0], y: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 6, delay, ease: "easeInOut" }}
           style={{ top: `${top}px`, left: `${left}px` }}
-          className="absolute text-gray-100 text-xs select-none"
+          className="absolute text-ink-muted text-xs select-none"
         >
           {glyph}
         </motion.span>

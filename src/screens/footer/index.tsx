@@ -1,6 +1,3 @@
-import { CSSProperties } from 'react';
-import useIsOverHero from '@/hooks/useIsOverHero';
-
 // Social icons are inlined (rather than imported as <img>) so they can pick
 // up `currentColor` and flip with the theme via the wrapping link's text
 // color, instead of being stuck at their hardcoded #E8E8E8 fill.
@@ -23,19 +20,8 @@ const TwitterIcon = () => (
 );
 
 const Footer = () => {
-  // The icon stack is ~176px tall and bottom-anchored; while the hero is
-  // behind it the surface is always dark, so pin the inks to the dark values
-  // instead of following the theme (same treatment as the navbar).
-  const isOverHero = useIsOverHero(176, true);
-  const heroPinnedStyle = isOverHero
-      ? ({
-            "--color-ink-soft": "232 232 232",
-            "--color-ink-muted": "130 130 130",
-        } as CSSProperties)
-      : undefined;
-
   return (
-    <footer style={heroPinnedStyle} className='fixed bottom-6 z-40 w-full py-6 '>
+    <footer className='fixed bottom-6 z-40 w-full py-6 '>
         <div className='mx-auto w-full px-12 space-y-10'>
             <div className='w-4 text-ink-muted transition-colors duration-300 hover:text-ink-soft'>
                 <a href={'https://github.com/KwekuYamoah'} target="_blank">

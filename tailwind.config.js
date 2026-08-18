@@ -22,15 +22,13 @@ export default {
         "ink-soft": "rgb(var(--color-ink-soft) / <alpha-value>)",
         "ink-muted": "rgb(var(--color-ink-muted) / <alpha-value>)",
         hairline: "rgb(var(--color-hairline) / <alpha-value>)",
+        hero: "rgb(var(--color-hero) / <alpha-value>)",
       },
       letterSpacing: {
         'extra-wide': '0.3em', 
         'super-wide': '0.6em',
         'header-wide': '0.9em',
 
-      },
-      backgroundImage: {
-        "about-image": "url('./assets/background-theme.png')",
       },
       fontFamily: {
         accent: ["Noto Sans", "sans-serif"],

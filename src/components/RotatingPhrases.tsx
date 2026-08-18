@@ -41,10 +41,10 @@ const RotatingPhrases = () => {
           transition={{ duration: 0.5 }}
           className="flex flex-col items-start"
         >
-          <span className="text-right text-xl md:text-2xl font-accent text-gray-20 tracking-wide">
+          <span className="text-left text-xl md:text-2xl font-accent text-ink-soft tracking-wide">
             {current.original}
           </span>
-          <span className="text-sm text-gray-200 italic">
+          <span className="text-sm text-ink-muted italic">
             {current.transliteration} – {current.lang}
           </span>
         </motion.div>

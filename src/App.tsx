@@ -58,10 +58,6 @@ function App() {
           opacity: 0,
           duration: 0.5,
         })
-        .from("#home", {
-          opacity: 0,
-          delay: 0.5,
-        })
 
     }, comp)
 

@@ -22,6 +22,8 @@ const Navbar = ({isTopPage, selectedPage, setSelectedPage}: Props) => {
         setIsMenuToggled(!isMenuToggled);
     };
 
+    const cvUrl = `${import.meta.env.BASE_URL}Kweku_Yamoah_CV.pdf`;
+
     return (
         <nav>
             {/* Desktop View */}
@@ -53,12 +55,20 @@ const Navbar = ({isTopPage, selectedPage, setSelectedPage}: Props) => {
                                 setSelectedPage={setSelectedPage}
                                 menuFontSize='text-xs'
                             />
-                            <Link 
+                            <Link
                                 page="SKILLS"
                                 selectedPage={selectedPage}
                                 setSelectedPage={setSelectedPage}
                                 menuFontSize='text-xs'
                             />
+                            <a
+                                href={cvUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-gray-50 font-bold font-montserrat text-xs underline underline-offset-4 transition duration-300 hover:text-gray-20"
+                            >
+                                CV
+                            </a>
                         </div>
                         )
                         :
@@ -108,13 +118,22 @@ const Navbar = ({isTopPage, selectedPage, setSelectedPage}: Props) => {
                             menuFontSize='text-xl'
                             onClick={handleMenuToggle}
                         />
-                        <Link 
-                            page="SKILLS" 
+                        <Link
+                            page="SKILLS"
                             selectedPage={selectedPage}
                             setSelectedPage={setSelectedPage}
                             menuFontSize='text-xl'
                             onClick={handleMenuToggle}
                         />
+                        <a
+                            href={cvUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={handleMenuToggle}
+                            className="text-gray-50 font-bold font-montserrat text-xl underline underline-offset-4 transition duration-300 hover:text-gray-20"
+                        >
+                            CV
+                        </a>
                     </div>
                 </div>
 

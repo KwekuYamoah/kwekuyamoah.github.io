@@ -1,5 +1,3 @@
-import AnchorLink from 'react-anchor-link-smooth-scroll';
-
 type Props = {
     page: string;
     selectedPage: string;
@@ -11,20 +9,27 @@ type Props = {
 function Link({ page, selectedPage, setSelectedPage, menuFontSize, onClick }: Props) {
     const lowerCasePage = page.toLowerCase().replace(/ /g, "");
 
+    const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const id = e.currentTarget.getAttribute("href")?.slice(1);
+        const target = id ? document.getElementById(id) : null;
+        target?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        console.log(`Link clicked: ${lowerCasePage}`);
+        setSelectedPage(lowerCasePage);
+        if (onClick) {
+            onClick(); // Call onClick handler if provided
+        }
+    };
+
     return (
-        <AnchorLink
+        <a
             className={`${selectedPage === lowerCasePage ? "text-gray-20" : "text-gray-50"} font-bold font-montserrat ${menuFontSize} underline underline-offset-4 transition duration-300 hover:text-gray-20`}
             href={`#${lowerCasePage}`}
-            onClick={() => {
-                console.log(`Link clicked: ${lowerCasePage}`);
-                setSelectedPage(lowerCasePage);
-                if (onClick) {
-                    onClick(); // Call onClick handler if provided
-                }
-            }}
+            onClick={handleSmoothScroll}
         >
             {page}
-        </AnchorLink>
+        </a>
     )
 }
 

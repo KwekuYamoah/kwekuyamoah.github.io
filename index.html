@@ -5,6 +5,15 @@
     <link rel="icon" type="image/png" href="/Kweku-2.png" sizes="512x512"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kweku Andoh Yamoah</title>
+    <script>
+      (function () {
+        try {
+          if (window.localStorage.getItem("theme") === "light") {
+            document.documentElement.classList.add("light");
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -46,21 +46,21 @@ const Research = ({setSelectedPage}: Props) => {
       const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
       const cvUrl = `${import.meta.env.BASE_URL}Kweku_Yamoah_CV.pdf`;
   return (
-    <section id='research' className='bg-secondary-500 mx-auto'>
-        <motion.div 
+    <section id='research' className='bg-canvas theme-surface mx-auto'>
+        <motion.div
         className='h-full'
         onViewportEnter={() => setSelectedPage("research")}
         viewport={{ amount: 0.5 }}
         >
-            <div className='border-b border-gray-500'>
+            <div className='border-b border-hairline'>
                 <HeadText
-                backgroundColor='bg-secondary-500'
+                backgroundColor='bg-chrome'
                 action={
                     <a
                         href={cvUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="shrink-0 text-gray-50 font-bold font-montserrat text-xs underline underline-offset-4 transition duration-300 hover:text-gray-20"
+                        className="shrink-0 text-ink-muted font-bold font-montserrat text-xs underline underline-offset-4 transition duration-300 hover:text-ink-soft"
                     >
                         See more in my CV →
                     </a>
@@ -71,7 +71,7 @@ const Research = ({setSelectedPage}: Props) => {
             <div className='flex flex-col w-full py-16 gap-10'>
 
                 {researchDetails.map((item: ResearchType)=> (
-                    <div className={`border-b border-gray-500 px-24 md:px-40 ${isAboveMediumScreens ? 'flex ' : ''}`}
+                    <div className={`border-b border-hairline px-24 md:px-40 ${isAboveMediumScreens ? 'flex ' : ''}`}
                         key={item.resId}
                     >
                         <div className='md:w-1/2'>

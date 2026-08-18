@@ -24,7 +24,7 @@ function Link({ page, selectedPage, setSelectedPage, menuFontSize, onClick }: Pr
 
     return (
         <a
-            className={`${selectedPage === lowerCasePage ? "text-gray-20" : "text-gray-50"} font-bold font-montserrat ${menuFontSize} underline underline-offset-4 transition duration-300 hover:text-gray-20`}
+            className={`${selectedPage === lowerCasePage ? "text-ink-soft" : "text-ink-muted"} font-bold font-montserrat ${menuFontSize} underline underline-offset-4 transition duration-300 hover:text-ink-soft`}
             href={`#${lowerCasePage}`}
             onClick={handleSmoothScroll}
         >

@@ -8,8 +8,8 @@ type Props = {
 
 const HeadText = ({ backgroundColor, children, action }: Props) => {
   return (
-    <div className={`w-full ${backgroundColor} pt-24 pb-6 px-24 md:px-40 flex items-baseline justify-between gap-4`}>
-      <h1 className="font-satoshi text-base md:text-lg uppercase font-medium text-white tracking-header-wide">{children}</h1>
+    <div className={`w-full ${backgroundColor} theme-surface pt-24 pb-6 px-24 md:px-40 flex items-baseline justify-between gap-4`}>
+      <h1 className="font-satoshi text-base md:text-lg uppercase font-medium text-ink tracking-header-wide">{children}</h1>
       {action}
     </div>
   )

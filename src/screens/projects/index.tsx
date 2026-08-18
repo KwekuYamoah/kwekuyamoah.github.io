@@ -49,15 +49,15 @@ type Props = {
 
 const Project = ({setSelectedPage}: Props) => {
   return (
-    <section id='projects' className='bg-secondary-500 mx-auto'>
-      <motion.div 
+    <section id='projects' className='bg-canvas theme-surface mx-auto'>
+      <motion.div
       className='md:h-full'
       onViewportEnter={() => setSelectedPage("projects")}
       viewport={{ amount: 0.85 }}
       >
         <div className=''>
           <HeadText
-          backgroundColor='bg-secondary-500'
+          backgroundColor='bg-canvas'
           >Timeline</HeadText>
        
           <motion.div 

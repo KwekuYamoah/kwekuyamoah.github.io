@@ -27,6 +27,9 @@ const ResLap = ({description, link}: Props) => {
                     <a className="px-7 py-4 border rounded-full text-white text-xs hover:cursor-pointer hover:bg-white hover:text-black" href={link} target="_blank">Read Paper</a>
                 </div>
             )
+            /* Note: this card sits on top of the device-frame.svg photographic
+               mockup (dark bezel), which is intentionally exempt from theming
+               (see plan), so its text/button stay literal white/black. */
         }
         
     </div>

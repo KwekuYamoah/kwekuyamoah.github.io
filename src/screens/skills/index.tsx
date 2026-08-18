@@ -33,20 +33,20 @@ const Skill = ({setSelectedPage}: Props) => {
     const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
 
   return (
-        <section id='skills' className='bg-secondary-500 mx-auto pb-16'>
-            <motion.div 
+        <section id='skills' className='bg-canvas theme-surface mx-auto pb-16'>
+            <motion.div
             className='h-full'
             onViewportEnter={() => setSelectedPage("skills")}
             viewport={{ amount: 0.5 }}
             >
-                <div className='border-b border-gray-500'>
+                <div className='border-b border-hairline'>
                     <HeadText
-                    backgroundColor='bg-secondary-500'
+                    backgroundColor='bg-canvas'
                     >Experience</HeadText>
                 </div>
 
-                <motion.div 
-                className="px-24 md:px-40 my-14 text-white font-black text-justify font-satoshi text-xl flex flex-wrap leading-loose md:leading-relaxed md:text-5xl"
+                <motion.div
+                className="px-24 md:px-40 my-14 text-ink font-black text-justify font-satoshi text-xl flex flex-wrap leading-loose md:leading-relaxed md:text-5xl"
                 initial="hidden"
                 whileInView="visible"
                 viewport={{once: true, amount: 0.5}}

@@ -11,21 +11,15 @@ import Skill from '@/screens/skills';
 function App() {
   // Main App
   const [selectedPage, setSelectedPage] = useState("about")
-  const [isTopPage, setIsTopPage] = useState<boolean>(true)
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY === 0) {
-        setIsTopPage(true);
         setSelectedPage("about")
       }
-      
-      if (window.scrollY !== 0) {
-        setIsTopPage(false);
-      }
     }
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("sroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   const comp =  useRef(null)
@@ -65,7 +59,7 @@ function App() {
   }, [])
 
   return (
-    <div className="relative app bg-secondary-500" ref={comp}>
+    <div className="relative app bg-canvas theme-surface" ref={comp}>
           <div 
             id='intro-slider'
             className='overflow-y-hidden h-screen p-10 font-medium font-satoshi text-black bg-white fixed z-50 w-full flex flex-col gap-20 md:gap-10 tracking-tight'>
@@ -77,7 +71,6 @@ function App() {
       
       <div id="welcome">
         <Navbar
-          isTopPage = {isTopPage}
           selectedPage={selectedPage}
           setSelectedPage={setSelectedPage}
         />

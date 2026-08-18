@@ -14,6 +14,14 @@ export default {
         "gray-500": "#4F4F4F",
         "primary-500": "#DC2626",
         "secondary-500": "#1D1D1D",
+        // Semantic theme tokens (see src/index.css for the CSS variables
+        // these resolve to, and their `html.light` overrides).
+        canvas: "rgb(var(--color-canvas) / <alpha-value>)",
+        chrome: "rgb(var(--color-chrome) / <alpha-value>)",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        "ink-soft": "rgb(var(--color-ink-soft) / <alpha-value>)",
+        "ink-muted": "rgb(var(--color-ink-muted) / <alpha-value>)",
+        hairline: "rgb(var(--color-hairline) / <alpha-value>)",
       },
       letterSpacing: {
         'extra-wide': '0.3em', 

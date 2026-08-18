@@ -8,6 +8,45 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Dark (default). `chrome` sits *deeper* than `canvas` — the header strips
+   read as wells cut into the page. The light palette below mirrors that
+   relationship rather than inverting it, so the design language survives
+   the theme switch. */
+:root {
+  --color-canvas: 29 29 29;      /* secondary-500 #1D1D1D */
+  --color-chrome: 0 0 0;         /* black */
+  --color-ink: 255 255 255;      /* white */
+  --color-ink-soft: 232 232 232; /* gray-20 #E8E8E8 */
+  --color-ink-muted: 130 130 130;/* gray-50 #828282 */
+  --color-hairline: 79 79 79;    /* gray-500 #4F4F4F */
+}
+
+/* Warm paper rather than pure white: #FFF under a full-page layout is
+   glaring next to the always-dark hero, and the warm base keeps the
+   #DC2626 accent from going acidic. Every ink value clears AA (>=4.5:1)
+   against both canvas and chrome. */
+html.light {
+  --color-canvas: 244 242 238;   /* #F4F2EE paper */
+  --color-chrome: 231 227 220;   /* #E7E3DC recessed band */
+  --color-ink: 22 19 15;         /* #16130F */
+  --color-ink-soft: 58 52 45;    /* #3A342D */
+  --color-ink-muted: 103 94 84;  /* #675E54 */
+  --color-hairline: 214 208 199; /* #D6D0C7 */
+}
+
+/* The navbar logo is a flat white/transparent mark with no light-mode
+   variant asset, so it's inverted to read on a light chrome background.
+   Only applied once the nav has left the (always-dark) hero. */
+html.light .nav-logo {
+  filter: invert(1);
+}
+
+/* Theme swaps animate; scroll-driven color changes on fixed chrome do not
+   (those need to track the section behind them frame-for-frame). */
+.theme-surface {
+  transition: background-color 300ms ease, border-color 300ms ease;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -21,5 +60,5 @@ body,
   height: 100%;
   width: 100%;
   font-family: "Montserrat", sans-serif;
-  @apply text-gray-500;
+  @apply text-hairline;
 }

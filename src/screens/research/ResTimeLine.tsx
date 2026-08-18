@@ -12,16 +12,16 @@ const ResTimeLine = ({date, year, location}: Props) => {
   return (
     <div className={`my-10 flex gap-y-12 ${isAboveMediumScreens ? 'gap-x-14' : 'flex-col'}`}>
         <div>
-            <div className="uppercase pb-6 text-gray-50 border-b border-gray-50 text-xs">Date</div>
-            <p className="mt-6 text-gray-20">{date}</p>
+            <div className="uppercase pb-6 text-ink-muted border-b border-ink-muted text-xs">Date</div>
+            <p className="mt-6 text-ink-soft">{date}</p>
         </div>
         <div>
-            <div className="uppercase pb-6 text-gray-50 border-b border-gray-50 text-xs">Year</div>
-            <p className="mt-6 text-gray-20">{year}</p>
+            <div className="uppercase pb-6 text-ink-muted border-b border-ink-muted text-xs">Year</div>
+            <p className="mt-6 text-ink-soft">{year}</p>
         </div>
         <div>
-            <div className="uppercase pb-6 text-gray-50 border-b border-gray-50 text-xs">Location</div>
-            <p className="mt-6 text-gray-20">{location}</p>
+            <div className="uppercase pb-6 text-ink-muted border-b border-ink-muted text-xs">Location</div>
+            <p className="mt-6 text-ink-soft">{location}</p>
         </div>
     </div>
   )

@@ -48,14 +48,18 @@ const growLine = {
 };
 
 const linkClass =
-    "text-primary-500 underline underline-offset-4 decoration-primary-500/60 hover:text-gray-20 transition-colors duration-300";
+    "text-primary-500 underline underline-offset-4 decoration-primary-500/60 hover:text-ink-soft transition-colors duration-300";
 
 const About = ({ setSelectedPage }: Props) => {
 
     return (
-        <section id="about" className="bg-secondary-500 mx-auto">
-            <div className="relative bg-about-image bg-cover bg-center md:h-screen w-full">
+        <section id="about" className="bg-canvas theme-surface mx-auto">
+            <div id="hero" className="relative bg-about-image bg-cover bg-center md:h-screen w-full">
                 <div className="absolute inset-0 bg-black opacity-50"></div>
+                {/* Dissolves the (always-dark) hero into the header strip below
+                    it, so the seam works in light mode too. Sits before the
+                    content so it only ever washes the photo, never the text. */}
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent via-transparent to-chrome"></div>
                 <motion.div
                     className="relative mx-auto px-12 flex items-center justify-center"
                     onViewportEnter={() => setSelectedPage("about")}
@@ -115,13 +119,13 @@ const About = ({ setSelectedPage }: Props) => {
             </div>
 
             {/* Background: bio statement + education history */}
-            <div className="border-b border-gray-500">
-                <HeadText backgroundColor="bg-black">Background</HeadText>
+            <div className="border-b border-hairline">
+                <HeadText backgroundColor="bg-chrome">Background</HeadText>
             </div>
 
-            <div className="border-b border-gray-500">
+            <div className="border-b border-hairline">
                 <motion.div
-                    className="px-24 md:px-40 pt-8 pb-8 text-white font-black text-justify font-satoshi text-xl leading-loose md:leading-relaxed md:text-3xl flex flex-wrap"
+                    className="px-24 md:px-40 pt-8 pb-8 text-ink font-black text-justify font-satoshi text-xl leading-loose md:leading-relaxed md:text-3xl flex flex-wrap"
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.3 }}
@@ -156,21 +160,21 @@ const About = ({ setSelectedPage }: Props) => {
                                 {idx !== educationHistory.length - 1 && (
                                     <motion.div
                                         variants={growLine}
-                                        className="w-px flex-1 bg-gray-500 my-2 origin-top"
+                                        className="w-px flex-1 bg-hairline my-2 origin-top"
                                     />
                                 )}
                             </div>
                             <div className={idx !== educationHistory.length - 1 ? "pb-12" : ""}>
-                                <h3 className="text-white font-satoshi font-bold text-lg md:text-2xl">{edu.degree}</h3>
+                                <h3 className="text-ink font-satoshi font-bold text-lg md:text-2xl">{edu.degree}</h3>
                                 <a
                                     href={edu.institutionLink}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-block mt-1 text-gray-20 font-montserrat text-sm md:text-base underline underline-offset-4 hover:text-primary-500 transition-colors duration-300"
+                                    className="inline-block mt-1 text-ink-soft font-montserrat text-sm md:text-base underline underline-offset-4 hover:text-primary-500 transition-colors duration-300"
                                 >
                                     {edu.institution}
                                 </a>
-                                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-gray-50 text-xs md:text-sm font-montserrat uppercase tracking-wide">
+                                <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-ink-muted text-xs md:text-sm font-montserrat uppercase tracking-wide">
                                     <span>{edu.dateRange}</span>
                                     <span>•</span>
                                     <span>{edu.location}</span>

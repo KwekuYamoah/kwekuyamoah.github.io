@@ -1,24 +1,55 @@
-import Github from "@/assets/Github.svg";
-import LinkedIn from "@/assets/Linked.svg";
-import Twitter from "@/assets/Twitter.svg";
+import { CSSProperties } from 'react';
+import useIsOverHero from '@/hooks/useIsOverHero';
+
+// Social icons are inlined (rather than imported as <img>) so they can pick
+// up `currentColor` and flip with the theme via the wrapping link's text
+// color, instead of being stuck at their hardcoded #E8E8E8 fill.
+const GithubIcon = () => (
+    <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M5.28552 1.31006C6.06445 1.56445 6.80546 1.91611 7.48964 2.35606C8.45591 2.11797 9.44947 1.99836 10.4468 2.00006C11.4768 2.00006 12.4704 2.12406 13.4019 2.35506C14.0858 1.91554 14.8264 1.56422 15.605 1.31006C16.3279 1.07306 17.3579 0.689062 17.9699 1.34206C18.3848 1.78606 18.4885 2.53006 18.5621 3.09806C18.6451 3.73206 18.6648 4.55806 18.447 5.37806C19.2799 6.41506 19.7819 7.65206 19.7819 9.00006C19.7819 11.0421 18.6347 12.8151 16.9368 14.0431C16.1196 14.6266 15.2133 15.0841 14.2503 15.3991C14.4723 15.8891 14.5957 16.4311 14.5957 17.0001V20.0001C14.5957 20.2653 14.4865 20.5196 14.2919 20.7072C14.0974 20.8947 13.8336 21.0001 13.5585 21.0001H7.33509C7.06 21.0001 6.79618 20.8947 6.60166 20.7072C6.40714 20.5196 6.29786 20.2653 6.29786 20.0001V19.0091C5.3073 19.1261 4.47648 19.0221 3.77012 18.7331C3.03161 18.4311 2.51714 17.9631 2.13025 17.5151C1.76307 17.0911 1.3627 16.1351 0.783925 15.9491C0.65466 15.9076 0.535139 15.8419 0.432186 15.7559C0.329232 15.6699 0.244863 15.5651 0.183895 15.4477C0.0607645 15.2104 0.0404267 14.9358 0.127356 14.6841C0.214285 14.4324 0.401359 14.2243 0.647426 14.1056C0.893493 13.9869 1.17839 13.9673 1.43946 14.0511C2.13025 14.2731 2.58041 14.7531 2.88847 15.1391C3.38634 15.7591 3.79087 16.5691 4.57916 16.8921C4.90382 17.0251 5.37991 17.1121 6.12464 17.0141L6.29786 16.9801C6.29984 16.4359 6.41739 15.8978 6.64326 15.3991C5.68028 15.0841 4.77397 14.6266 3.95682 14.0431C2.25887 12.8151 1.11169 11.0431 1.11169 9.00006C1.11169 7.65406 1.61267 6.41806 2.4435 5.38206C2.22568 4.56206 2.24435 3.73406 2.32733 3.09906L2.33252 3.06106C2.40823 2.47906 2.4964 1.79406 2.91959 1.34206C3.53156 0.689062 4.56257 1.07406 5.28448 1.31106L5.28552 1.31006Z" fill="currentColor"/>
+    </svg>
+);
+
+const LinkedInIcon = () => (
+    <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M4.93945 2.00002C4.93919 2.53046 4.72822 3.03906 4.35296 3.41394C3.9777 3.78883 3.46889 3.99929 2.93845 3.99902C2.40802 3.99876 1.89942 3.78779 1.52453 3.41253C1.14965 3.03727 0.939188 2.52846 0.939453 1.99802C0.939719 1.46759 1.15069 0.958988 1.52595 0.584103C1.90121 0.209218 2.41002 -0.00124153 2.94045 -0.000976312C3.47089 -0.000711096 3.97949 0.210257 4.35437 0.585517C4.72926 0.960777 4.93972 1.46959 4.93945 2.00002ZM4.99945 5.48002H0.999453V18H4.99945V5.48002ZM11.3195 5.48002H7.33945V18H11.2795V11.43C11.2795 7.77002 16.0495 7.43002 16.0495 11.43V18H19.9995V10.07C19.9995 3.90002 12.9395 4.13002 11.2795 7.16002L11.3195 5.48002Z" fill="currentColor"/>
+    </svg>
+);
+
+const TwitterIcon = () => (
+    <svg width="22" height="17" viewBox="0 0 22 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+        <path d="M21.4591 2C20.6891 2.35 19.8591 2.58 18.9991 2.69C19.8791 2.16 20.5591 1.32 20.8791 0.31C20.0491 0.81 19.1291 1.16 18.1591 1.36C17.3691 0.5 16.2591 0 14.9991 0C12.6491 0 10.7291 1.92 10.7291 4.29C10.7291 4.63 10.7691 4.96 10.8391 5.27C7.27906 5.09 4.10906 3.38 1.99906 0.79C1.62906 1.42 1.41906 2.16 1.41906 2.94C1.41906 4.43 2.16906 5.75 3.32906 6.5C2.61906 6.5 1.95906 6.3 1.37906 6V6.03C1.37906 8.11 2.85906 9.85 4.81906 10.24C4.18979 10.4122 3.52916 10.4362 2.88906 10.31C3.16067 11.1625 3.6926 11.9084 4.41008 12.4429C5.12756 12.9775 5.99451 13.2737 6.88906 13.29C5.37269 14.4904 3.49306 15.1393 1.55906 15.13C1.21906 15.13 0.879062 15.11 0.539062 15.07C2.43906 16.29 4.69906 17 7.11906 17C14.9991 17 19.3291 10.46 19.3291 4.79C19.3291 4.6 19.3291 4.42 19.3191 4.23C20.1591 3.63 20.8791 2.87 21.4591 2Z" fill="currentColor"/>
+    </svg>
+);
 
 const Footer = () => {
+  // The icon stack is ~176px tall and bottom-anchored; while the hero is
+  // behind it the surface is always dark, so pin the inks to the dark values
+  // instead of following the theme (same treatment as the navbar).
+  const isOverHero = useIsOverHero(176, true);
+  const heroPinnedStyle = isOverHero
+      ? ({
+            "--color-ink-soft": "232 232 232",
+            "--color-ink-muted": "130 130 130",
+        } as CSSProperties)
+      : undefined;
+
   return (
-    <footer className='fixed bottom-6 z-40 w-full py-6 '>
+    <footer style={heroPinnedStyle} className='fixed bottom-6 z-40 w-full py-6 '>
         <div className='mx-auto w-full px-12 space-y-10'>
-            <div className='w-4'>
+            <div className='w-4 text-ink-muted transition-colors duration-300 hover:text-ink-soft'>
                 <a href={'https://github.com/KwekuYamoah'} target="_blank">
-                    <img src={Github}  className='w-full h-full' />
+                    <GithubIcon />
                 </a>
             </div>
-            <div className='w-4'>
+            <div className='w-4 text-ink-muted transition-colors duration-300 hover:text-ink-soft'>
                 <a href={'https://www.linkedin.com/in/kweku-andoh-yamoah/'} target="_blank">
-                    <img src={LinkedIn}  className='w-full h-full' />
+                    <LinkedInIcon />
                 </a>
             </div>
-            <div className='w-4'>
+            <div className='w-4 text-ink-muted transition-colors duration-300 hover:text-ink-soft'>
                 <a href={'https://x.com/neural_mozart'} target="_blank">
-                    <img src={Twitter}  className='w-full h-full' />
+                    <TwitterIcon />
                 </a>
             </div>
         </div>

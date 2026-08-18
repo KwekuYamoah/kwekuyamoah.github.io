@@ -1,0 +1,641 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Kweku Yamoah's CV},
+    pdfauthor={Kweku Yamoah},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+
+\usepackage{charter}
+
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in September 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{$|$}
+
+    \begin{header}
+        \fontsize{25 pt}{25 pt}\selectfont Kweku Andoh Yamoah
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{\hrefWithoutArrow{mailto:kyamoah@ufl.edu}{kyamoah@ufl.edu}}%
+        \kern 5.0 pt%
+        \AND%
+        
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://kwekuyamoah.github.io/}{kwekuyamoah.github.io}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/kweku-andoh-yamoah}{linkedin.com/in/kweku-andoh-yamoah}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/KwekuYamoah}{github.com/KwekuYamoah}}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+
+    % \section{Welcome to RenderCV!}
+
+
+
+        
+    %     \begin{onecolentry}
+    %         \href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+    %     \end{onecolentry}
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{onecolentry}
+    %         The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
+    %     \end{onecolentry}
+
+
+    
+    % \section{Quick Guide}
+
+    % \begin{onecolentry}
+    %     \begin{highlightsforbulletentries}
+
+    %     \item Each section title is arbitrary and each section contains a list of entries.
+
+    %     \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
+
+    %     \item Select a section title, pick an entry type, and start writing your section!
+
+    %     \item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
+
+
+    %     \end{highlightsforbulletentries}
+    % \end{onecolentry}
+
+    \section{Education} 
+        \begin{twocolentry}{
+            Aug 2025 – Present
+        }
+            \textbf{University of Florida}, Ph.D. Computer Science
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item CGPA: 4.0/4.0 
+                % \item \textbf{Coursework:} Computer Architecture, Comparison of Learning Algorithms, Computational Theory
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.20 cm}
+        \begin{twocolentry}
+            {Sep 2018 - May 2022}
+            \textbf{Ashesi University}, BSc. Computer Science
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item CGPA: 3.95/4.00 (Top 1\%) \\
+                * \textit{Graduated with Summa Cum Laude, with highest academic honors}.
+                % \item Thesis: \textit{Deepfake Speech and Automatic Speaker Verification Systems in the African setting}. Supervised by Dennis Asamoah Owusu
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Research Interest}
+     Neuro-Symbolic AI; Multi-Agent Systems; Multilingual Low-Resource NLP (African Languages); Efficient and Controllable Language Generation.
+
+    \vspace{0.2 cm}
+    
+    \begin{onecolentry}
+         I investigate neuro-symbolic and multi-agent approaches to NLP in low-resource contexts. My goal is to develop systems that utilize structured linguistic knowledge to facilitate efficient, reliable, and controllable language understanding and generation, with a focus on African languages.
+    \end{onecolentry}
+
+
+    \section{Publications}
+
+        \vspace{0.20 cm}
+        \begin{samepage}
+            \begin{twocolentry}
+                {May 2026}
+
+                 \textbf{An Elicitation-Matrix Approach to Pragmatic Context Modeling in Low-Resource Machine Translation: The Case of Akuapem Twi}
+            \end{twocolentry}
+               
+            \vspace{0.10 cm}
+            \begin{onecolentry}
+                \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Godfred Agyapong}, \mbox{Kevin C. Scroggins}, \mbox{Neel Parekh}, \mbox{Chathuri Jayaweera}, \mbox{Shlok Gilda}, \mbox{Bonnie Dorr}, \mbox{Emmanuel J. Dorley} \\
+                \vspace{0.10 cm}        
+                \href{https://journals.flvc.org/FLAIRS/article/view/141846/147007}{In \textit{The International FLAIRS Conference Proceedings, 39(1)}, doi: 10.32473/flairs.39.1.141846}
+                \end{onecolentry}
+        \end{samepage}
+
+        
+        \vspace{0.20 cm}
+        \begin{samepage}
+            \begin{twocolentry}
+                {May 2026}
+
+                 \textbf{An Elicitation-Matrix Approach to Pragmatic Context Modeling in Low-Resource Machine Translation: The Case of Akuapem Twi}
+            \end{twocolentry}
+               
+            \vspace{0.10 cm}
+            \begin{onecolentry}
+                \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Godfred Agyapong}, \mbox{Kevin C. Scroggins}, \mbox{Neel Parekh}, \mbox{Chathuri Jayaweera}, \mbox{Shlok Gilda}, \mbox{Bonnie Dorr}, \mbox{Emmanuel J. Dorley} \\
+                \vspace{0.10 cm}        
+                \href{https://journals.flvc.org/FLAIRS/article/view/141846/147007}{In \textit{The International FLAIRS Conference Proceedings, 39(1)}, doi: 10.32473/flairs.39.1.141846}
+                \end{onecolentry}
+        \end{samepage}
+
+        \vspace{0.20 cm}
+        \begin{samepage}
+            \begin{twocolentry}{
+                May 2026
+            }
+                \textbf{Winning Isn’t Reasoning: Evaluating Iterative Reasoning Updating in Language Models}
+            \end{twocolentry}
+            \vspace{0.10 cm}
+            
+            \begin{onecolentry}
+                \mbox{Kevin C. Scroggins}, \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Emmanuel J. Dorley}
+                \vspace{0.10 cm}
+                
+                \href{https://journals.flvc.org/FLAIRS/article/view/141832/147189}{In \textit{The International FLAIRS Conference Proceedings, 39(1)}, doi: 10.32473/flairs.39.1.141832}
+                \end{onecolentry}
+        \end{samepage}
+        
+        \begin{samepage}
+            \begin{twocolentry}{
+                Aug 2025
+            }
+                \textbf{Enhancing Speech instruction Understanding and Disambiguation in Robotics via Speech Prosody}
+            \end{twocolentry}
+            \vspace{0.10 cm}
+            
+            \begin{onecolentry}
+                \mbox{David Sasu}, \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Benedict Quartey}, \mbox{Natalie Schluter}
+                \vspace{0.10 cm}
+                
+                \href{https://www.isca-archive.org/interspeech_2025/sasu25b_interspeech.pdf}{In \textit{Proc. Interspeech 2025}, doi: 10.21437/Interspeech.2025-1961}
+                \end{onecolentry}
+        \end{samepage}
+
+        \vspace{0.20 cm}
+
+        \begin{samepage}
+            \begin{twocolentry}{
+                July 2025
+            }
+                \textbf{Building a Functional Machine Translation Corpus for Kpelle}
+            \end{twocolentry}
+            \vspace{0.10 cm}
+            \begin{onecolentry}
+                \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Jackson Weako}, \mbox{Emmanuel J. Dorley} \\
+                \vspace{0.10 cm}        
+                \href{https://aclanthology.org/2025.africanlp-1.8/}{ In \textit{Proceedings of the Sixth Workshop on African Natural Language Processing (AfricaNLP 2025)}, Association for Computational Linguistics, doi: 10.18653/v1/2025.africanlp-1.8}
+                \end{onecolentry}
+        \end{samepage}
+
+        \vspace{0.20 cm}
+        \begin{samepage}
+            \begin{twocolentry}{
+                Sep 2023
+            }
+                \textbf{Evaluating Deepfake Speech and ASV Systems on African Accents}
+            \end{twocolentry}
+            \vspace{0.10 cm}
+            \begin{onecolentry}
+                \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Hussein Baba Fuseini}, \mbox{David Ebo Adjepon-Yamoah}, \mbox{Dennis Asamoah Owusu} \\
+                \vspace{0.10 cm}        
+                \href{https://openreview.net/forum?id=j26ZkJ7w64}{In \textit{Deep Learning Indaba 2023}}
+                \end{onecolentry}
+        \end{samepage}
+
+        \vspace{0.20 cm}
+        % \begin{samepage}
+        %     \begin{twocolentry}{
+        %         May 2023
+        %     }
+        %         \textbf{Efforts to Apply Natural Language Processing Technologies in Africa}
+        %     \end{twocolentry}
+        %     \vspace{0.10 cm}
+        %     \begin{onecolentry}
+        %         \mbox{\textbf{\textit{Kweku Andoh Yamoah}}} \\
+        %         \vspace{0.10 cm}        
+        %         \href{https://journal.ashesi.edu.gh/index.php/seed/article/view/63}{In \textit{Science Engineering Entrepreneurship Design (SEED) Journal}}
+        %         \end{onecolentry}
+        % \end{samepage}
+
+        \vspace{0.50 cm}
+        \large \textit{\textbf{Under Review}}
+            \vspace{0.10 cm}
+            \normalsize
+            \begin{samepage}
+                \begin{onecolentry}
+                  \textbf{Fine-Tuning A Large Language Model for Systematic Review Screening}
+                \end{onecolentry}
+                \vspace{0.10 cm}
+                \begin{onecolentry}
+                    \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Noah Schroeder}, \mbox{Emmanuel Dorley}, \mbox{Neha Rani}, \mbox{Caleb Schutz} \\
+                    \vspace{0.10 cm}        
+                    \textbf{Under review at:} 27th International Conference on Artificial Intelligence in Education, \textit{Main Conference}.
+                    \end{onecolentry}
+            \end{samepage}
+        
+        \vspace{0.20 cm}
+            \begin{samepage}
+                \begin{onecolentry}
+                    \textbf{Context-Switching Costs in Hybrid LLM-Algorithm Systems}
+                \end{onecolentry}
+                \vspace{0.10 cm}
+                \begin{onecolentry}
+                    \mbox{Kevin C. Scroggins}, \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Kevin Kurian}, \mbox{Emmanuel J. Dorley} \\
+                    \vspace{0.10 cm}        
+                    \textbf{Under review at:} AAMAS 2026 Workshop on Strategic Engineering
+                    \end{onecolentry}
+            \end{samepage}
+
+        \vspace{0.20 cm}
+            \begin{samepage}
+                \begin{onecolentry}
+                    \textbf{AI Assisted Data Extraction for Systematic Reviews in Education}
+                \end{onecolentry}
+                \vspace{0.10 cm}
+                \begin{onecolentry}
+                    \mbox{Noah Schroeder}, \mbox{Chris Davis Jaldi}, \mbox{Shan Zhang}, \mbox{\textbf{Kweku Yamoah}} \\
+                    \vspace{0.10 cm}        
+                    \textbf{Under review at:} Educational Technology Research and Development
+                    \end{onecolentry}
+        \end{samepage}
+
+        % \vspace{0.50 cm}
+        % \large \textit{\textbf{Poster Presentations}}
+        %     \vspace{0.10 cm}
+        %     \normalsize
+        %     \begin{samepage}
+        %         \begin{twocolentry}{
+        %             Sep 2023
+        %         }
+        %             \textbf{Deepfake Speech on African Accents: How do Modern Systems Perform?}
+        %         \end{twocolentry}
+        %         \vspace{0.10 cm}
+        %         \begin{onecolentry}
+        %             \mbox{\textbf{\textit{Kweku Andoh Yamoah}}}, \mbox{Hussein Baba Fuseini}, \mbox{David Ebo Adjepon-Yamoah}, \mbox{Dennis Asamoah Owusu} \\
+        %             \vspace{0.10 cm}        
+        %             \href{https://openreview.net/forum?id=j26ZkJ7w64}{openreview.net/forum?id=j26ZkJ7w64}
+        %             \end{onecolentry}
+        %     \end{samepage}
+    \section{Professional Experience}
+        
+        \begin{twocolentry}{
+            Aug 2025 – Present
+        }
+            \textbf{Graduate Research Assistant}, University of Florida, CISE -- Gainesville, FL
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                Graduate Research Assistant in the Intelligent Agents Research Lab under Prof. Emmanuel Dorley, focusing on multilingual low-resource NLP for African languages. Responsibilities include building language datasets, developing neuro-symbolic representations, fine--tuning language models for tasks such as translation and speech, and documenting reproducible experimental pipelines to produce publication--ready results.
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+        \begin{twocolentry}{
+            Aug 2022 – March 2025
+        }
+            \textbf{Undergraduate Teaching Assistant}, Ashesi University -- Berekuso, Ghana
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                 Courses handled: Machine Learning, Introduction to Artificial Intelligence, Natural Language Processing, Discrete Structures \& Theory, and Networks \& Data Communications, Cloud Computing, Intermediate Computer Programming in C++.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.2cm}
+        % \begin{twocolentry}{
+        %     Dec 2021 – Aug 2023
+        % }
+        %     \textbf{Research Assistant}, Nokwary Technologies -- Accra, Ghana
+        % \end{twocolentry}
+        
+        % \vspace{0.10 cm}
+        % \begin{onecolentry}
+        %     \begin{highlights}
+        %          Developed ASR models for Asante Twi and Ga, achieving ~25\% word error rate (WER), and led exploratory work toward a high-quality Asante Twi TTS system; curating and compiling Asante Twi text resources into a foundational dataset and producing detailed technical documentation to support continued development and institutional reuse.
+        %     \end{highlights}
+        % \end{onecolentry}
+
+        % \vspace{0.2cm}
+        % \begin{twocolentry}{
+        %     May 2021 – July 2021
+        % }
+        %     \textbf{Research Associate}, College of Wooster, AMRE -- Wooster, OH
+        % \end{twocolentry}
+        % \vspace{0.10 cm}
+        % \begin{onecolentry}
+        %     \begin{highlights}
+        %          Analyzed costs, sales, and profits for a major grocery chain to build a data-driven view of customer purchasing behavior; applied RFM (Recency, Frequency, Monetary) segmentation to generate actionable insights, inform targeted marketing, increase average transaction value, and improve customer retention.
+        %     \end{highlights}
+        % \end{onecolentry}
+
+
+
+    
+
+    \section{Awards}
+        \normalsize
+        \begin{twocolentry}
+            {August 2025}
+                \textbf{Best Paper Finalist in Datasets Track} DeepLearning Indaba, 2025
+        \end{twocolentry}
+        \vspace{0.10 cm}
+
+        \begin{twocolentry}
+            {June 2022}
+                \textbf{Best Computer Science Senior Capstone Project}, Ashesi University
+        \end{twocolentry}
+        \vspace{0.10 cm}
+        
+        \begin{twocolentry}
+            {2019, 2020, 2021, 2022}
+                \textbf{Dean’s List}, Ashesi University
+        \end{twocolentry}
+        \vspace{0.10 cm}
+
+        \begin{twocolentry}
+            {2019, 2020, 2021, 2022}
+                \textbf{MasterCard Foundation Scholar}, Ashesi University
+        \end{twocolentry}
+        \vspace{0.10 cm}
+
+    \section{Invited Talk}
+    \begin{twocolentry}
+        {Nov 2025}
+        \textbf{Natural Language Processing: An Overview}, \textit{Introduction to Artificial Intelligence (CAP 4621)}, University of Florida, Gainesville, FL
+    \end{twocolentry}
+
+    \section{Academic and Professional Services}
+    \large \textit{Reviewer}
+    \normalsize
+    \begin{twocolentry}
+        
+        {Feb 2026}
+        2026 African NLP Workshop
+    \end{twocolentry}
+
+    \vspace{0.2 cm}
+    \large \textit{University Service}
+     \normalsize
+    \begin{twocolentry}
+        {Feb 2021 - May 2021}
+        Academic Committee Co-Chair, Ashesi Student Council	
+    \end{twocolentry}
+    \vspace{0.1 cm}
+
+    \begin{twocolentry}
+        {Feb 2021 - May 2021}
+        Faculty Intern for Ashesi Success, Ashesi University	
+    \end{twocolentry}
+    \vspace{0.1 cm}
+
+    \begin{twocolentry}
+        {Sep 2019 - Nov 2021}
+        Coach for the Coaching, Counseling, \& Academic Peer Support Group, Ashesi University	
+    \end{twocolentry}
+    
+
+    \vspace{0.2 cm}
+    \large \textit{Volunteer Service}
+     \normalsize
+    \begin{twocolentry}
+        {2022, 2023}
+        Hackathon Judge, Ashesi Design Lab
+    \end{twocolentry}
+    \vspace{0.1 cm}
+
+    \begin{twocolentry}
+        {2023}
+        ML Session Tutorial Lead, Maker's Session, Ashesi Design Lab
+    \end{twocolentry}
+    \vspace{0.1 cm}
+    
+    \begin{twocolentry}
+        {2021}
+        Moderator, MasterCard Foundation Scholars Convening
+    \end{twocolentry}
+    \vspace{0.1 cm}
+    
+    % \section{Projects}
+
+
+
+        
+    %     \begin{twocolentry}{
+    %         \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
+    %     }
+    %         \textbf{Multi-User Drawing Tool}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Developed an electronic classroom where multiple users can simultaneously view and draw on a "chalkboard" with each person's edits synchronized
+    %             \item Tools Used: C++, MFC
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{twocolentry}{
+    %         \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
+    %     }
+    %         \textbf{Synchronized Desktop Calendar}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Developed a desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users
+    %             \item Tools Used: C\#, .NET, SQL, XML
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{twocolentry}{
+    %         2002
+    %     }
+    %         \textbf{Custom Operating System}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Built a UNIX-style OS with a scheduler, file system, text editor, and calculator
+    %             \item Tools Used: C
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+    \section{Technologies}
+        \begin{onecolentry}
+            \textbf{Main Programming:} Python \\
+            \textbf{Familiar Programming Language:}  C++, C, Java, SQL
+            
+        \end{onecolentry}
+    
+        \vspace{0.2 cm}
+
+        \begin{onecolentry}
+            \textbf{ML libraries:} PyTorch, TensorFlow
+        \end{onecolentry}
+
+
+    
+
+\end{document}

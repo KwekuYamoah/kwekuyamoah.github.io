@@ -12,7 +12,7 @@ const researchDetails: Array<ResearchType> = [
     {
         resId: 1,
         resTitle: "Elicitation-Matrix Twi Translation",
-        resDescription: "An Elicitation-Matrix Approach to Pragmatic Context Modeling in Low-Resource Machine Translation: The Case of Akuapem Twi. We introduce an elicitation-matrix method for capturing pragmatic context in low-resource MT...",
+        resDescription: "We introduce an elicitation-matrix method for capturing pragmatic context in low-resource machine translation, using it to guide translation of Akuapem Twi and better preserve meaning that literal translation loses...",
         resDate: "May",
         resYear: "2026",
         resLocation: "Marco Island, FL",
@@ -21,7 +21,7 @@ const researchDetails: Array<ResearchType> = [
     {
         resId: 2,
         resTitle: "Speech Prosody for Robot Instructions",
-        resDescription: "Enhancing Speech Instruction Understanding and Disambiguation in Robotics via Speech Prosody: we show that prosodic cues improve a robot's ability to disambiguate spoken instructions...",
+        resDescription: "We show that prosodic cues improve a robot's ability to disambiguate spoken instructions, helping it understand intent even when phrasing alone is ambiguous...",
         resDate: "Aug",
         resYear: "2025",
         resLocation: "Rotterdam, Netherlands",
@@ -30,7 +30,7 @@ const researchDetails: Array<ResearchType> = [
     {
         resId: 3,
         resTitle: "Machine Translation Corpus for Kpelle",
-        resDescription: "Building a Functional Machine Translation Corpus for Kpelle: we present the first functional MT corpus for Kpelle, a low-resource Mande language spoken in Liberia and Guinea...",
+        resDescription: "We present the first functional machine translation corpus for Kpelle, a low-resource Mande language spoken in Liberia and Guinea...",
         resDate: "July",
         resYear: "2025",
         resLocation: "Vienna, Austria",

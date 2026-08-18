@@ -57,7 +57,7 @@ const Project = ({setSelectedPage}: Props) => {
       >
         <div className=''>
           <HeadText
-          backgroundColor='bg-black'
+          backgroundColor='bg-secondary-500'
           >Timeline</HeadText>
        
           <motion.div 

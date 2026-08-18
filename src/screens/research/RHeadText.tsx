@@ -7,7 +7,7 @@ const RHeadText = ({title}: Props) => {
   const parts = title.split(new RegExp(`(${highlightWords.join("|")})`));
   return (
     <>
-      <h1 className={`font-satoshi text-4xl leading-snug text-white font-black md:text-7xl md:w-[408px] md:leading-snug`}>
+      <h1 className={`font-satoshi text-3xl leading-snug text-white font-black md:text-6xl md:w-[408px] md:leading-snug`}>
         {parts.map((part, index) =>
           highlightWords.includes(part) ? (
             <span key={index} className="text-primary-500">

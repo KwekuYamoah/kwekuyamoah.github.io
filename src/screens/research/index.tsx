@@ -55,6 +55,16 @@ const Research = ({setSelectedPage}: Props) => {
             <div className='border-b border-gray-500'>
                 <HeadText
                 backgroundColor='bg-secondary-500'
+                action={
+                    <a
+                        href={cvUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 text-gray-50 font-bold font-montserrat text-xs underline underline-offset-4 transition duration-300 hover:text-gray-20"
+                    >
+                        See more in my CV →
+                    </a>
+                }
                 >Research</HeadText>
             </div>
 
@@ -114,27 +124,6 @@ const Research = ({setSelectedPage}: Props) => {
                         </motion.div>
                     </div>
                 ))}
-
-                <motion.div
-                className='flex justify-center px-24 md:px-40'
-                initial="hidden"
-                whileInView="visible"
-                viewport={{once: true, amount: 0.5}}
-                transition={{duration: 0.5}}
-                variants={{
-                    hidden: {opacity: 0, y: 20},
-                    visible: {opacity: 1, y: 0}
-                }}
-                >
-                    <a
-                        href={cvUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-7 py-4 border rounded-full text-white text-xs font-bold tracking-wide hover:cursor-pointer hover:bg-white hover:text-black transition-colors duration-300"
-                    >
-                        See more in my CV →
-                    </a>
-                </motion.div>
             </div>
 
         </motion.div>

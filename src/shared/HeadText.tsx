@@ -3,11 +3,15 @@ import React from 'react'
 type Props = {
   children: React.ReactNode;
   backgroundColor: string;
+  action?: React.ReactNode;
 };
 
-const HeadText = ({ backgroundColor,children }: Props) => {
+const HeadText = ({ backgroundColor, children, action }: Props) => {
   return (
-    <h1 className={`w-full ${backgroundColor} font-satoshi pt-24 pb-6 px-24 md:px-40 text-sm uppercase font-medium text-white tracking-header-wide`}>{children}</h1>
+    <div className={`w-full ${backgroundColor} pt-24 pb-6 px-24 md:px-40 flex items-baseline justify-between gap-4`}>
+      <h1 className="font-satoshi text-sm uppercase font-medium text-white tracking-header-wide">{children}</h1>
+      {action}
+    </div>
   )
 }
 
